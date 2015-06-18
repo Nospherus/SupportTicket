@@ -1,0 +1,36 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title>SupportTicketApp</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="external_scripts/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="shortcut icon" href="favicon.ico">
+    
+    <script src="external_scripts/jquery/dist/jquery.js"></script>
+    <script src="external_scripts/angular/angular.js"></script>
+    <script src="external_scripts/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="external_scripts/angular-route/angular-route.js"></script>
+    
+    <script src="scripts/app.js"></script>
+    <script src="scripts/components/navbar/navbar.js"></script>
+    <script src="scripts/components/om/om.js"></script>
+    
+    <script src="scripts/services/brukerservice.js" ></script>
+</head>
+
+<body data-ng-app="supportTicketApp">
+    <!-- Add your site or application content here -->
+    <div class="container-fluid">
+      <div data-ng-include="'scripts/components/navbar/navbar.html'"></div>
+
+      <div class="row" data-ng-view=""></div>
+
+      <div class="footer row">
+        <span> Copyright 1992 (c) </span>
+    </div>
+</div>
+</body>
+</html>
