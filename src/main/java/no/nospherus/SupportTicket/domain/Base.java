@@ -19,10 +19,10 @@ public abstract class Base {
     private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date sistEndret;
+    private Date lastEdited;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date opprettet;
+    private Date created;
 
     public Long getId() {
         return id;
@@ -32,23 +32,23 @@ public abstract class Base {
         this.id = id;
     }
 
-    public Date getSistEndret() {
-        return sistEndret;
+    public Date getLastEdited() {
+        return lastEdited;
     }
 
     @PreUpdate
-    private void setSistEndret() {
-        this.sistEndret = new Date();
+    private void setLastEdited() {
+        this.lastEdited = new Date();
     }
 
-    public Date getOpprettet() {
-        return opprettet;
+    public Date getCreated() {
+        return created;
     }
 
     @PrePersist
-    private void setOpprettet() {
-        Date tidsstempel = new Date();
-        this.sistEndret = tidsstempel;
-        this.opprettet = tidsstempel;
+    private void setCreated() {
+        Date timestamp = new Date();
+        this.lastEdited = timestamp;
+        this.created = timestamp;
     }
 }

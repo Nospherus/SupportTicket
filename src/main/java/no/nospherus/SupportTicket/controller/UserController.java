@@ -1,7 +1,7 @@
 package no.nospherus.SupportTicket.controller;
 
-import no.nospherus.SupportTicket.domain.BruksKontekst;
-import no.nospherus.SupportTicket.service.BrukerService;
+import no.nospherus.SupportTicket.domain.UserContext;
+import no.nospherus.SupportTicket.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/bruker")
-public class BrukerController {
+@RequestMapping("/api/user")
+public class UserController {
     @Autowired
-    private BrukerService brukerService;
+    private UserService userService;
 
-    @RequestMapping(value = "/brukskontekst", method = RequestMethod.GET)
+    @RequestMapping(value = "/usercontext", method = RequestMethod.GET)
     @ResponseBody
-    public BruksKontekst getBruksKontekst() {
-        return brukerService.getBruksKontekst();
+    public UserContext getUserContext() {
+        return userService.getUserContext();
     }
 }

@@ -8,11 +8,20 @@ angular
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: '/scripts/components/welcome/welcome.html',
+        templateUrl: '/scripts/components/home/home.html',
+          controller: 'HomeCtrl'
       })
-      .when('/om', {
-        templateUrl: '/scripts/components/om/om.html',
-        controller: 'OmCtrl'
+      .when('/register', {
+        templateUrl: '/scripts/components/register/register.html',
+        controller: 'RegisterCtrl'
+      })
+        .when('/check', {
+          templateUrl: '/scripts/components/check/check.html',
+          controller: 'CheckCtrl'
+        })
+      .when('/about', {
+        templateUrl: '/scripts/components/about/about.html',
+        controller: 'AboutCtrl'
       })
       .otherwise({
         redirectTo: '/'

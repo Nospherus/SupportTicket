@@ -1,0 +1,34 @@
+<div style="text-align: center" data-ng-controller="CheckCtrl">
+    <strong style="margin-left: 30px; font-size: larger">Check the status of your ticket</strong>
+    <div class="padding-30">
+
+        <div class="input-group">
+            <span class="input-group-addon input-name-110" id="input-check-id">Ticket id*</span>
+            <input type="text" class="form-control input-3x" placeholder="ticket id"
+                   aria-describedby="input-check-id"  data-ng-model="ticketid">
+        </div>
+        <a id="btn-check-submit" data-ng-href="" data-ng-click="checkTicket()" class="btn btn-default home-button" style="margin-top: 15px;">Check</a>
+        <a id="btn-check-cancel" class="btn btn-default home-button" style="margin-top: 15px;" data-ng-href="#/">Cancel</a>
+    </div>
+    <div data-ng-if="ticket.name != ''">
+        <div class="input-group">
+            <span class="input-group-addon input-name-110" id="input-register-id">Ticket</span>
+            <input type="text" class="form-control input-3x" disabled="true"
+                   aria-describedby="input-register-id"  data-ng-model="ticket.id">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon input-name-110" id="input-register-name">Name</span>
+            <input type="text" class="form-control input-3x" disabled="true"
+                   aria-describedby="input-register-name"  data-ng-model="ticket.customer.name">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon input-name-110" id="input-register-email">Status</span>
+            <input type="text" class="form-control input-3x" disabled="true"
+                   aria-describedby="input-register-email"  data-ng-model="ticket.status">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon input-name-110" id="input-register-phone">Assigned</span>
+            <input type="text" class="form-control input-3x" disabled="true"
+                   aria-describedby="input-register-phone"  data-ng-model="ticket.tekkie.name">
+        </div>
+</div>

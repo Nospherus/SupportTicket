@@ -1,0 +1,40 @@
+<div style="text-align: center" data-ng-controller="RegisterCtrl">
+<strong style="margin-left: 30px; font-size: larger">Register a new ticket</strong>
+<div class="padding-30" data-ng-if="ticketId == ''">
+
+    <div class="input-group">
+        <span class="input-group-addon input-name-110" id="input-register-name">Name*</span>
+        <input type="text" class="form-control input-3x" placeholder="Your name"
+               aria-describedby="input-register-name"  data-ng-model="ticket.name">
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon input-name-110" id="input-register-email">Email</span>
+        <input type="text" class="form-control input-3x" placeholder="Your email"
+               aria-describedby="input-register-email"  data-ng-model="ticket.email">
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon input-name-110" id="input-register-phone">Phone</span>
+        <input type="text" class="form-control input-3x" placeholder="Your phone number"
+               aria-describedby="input-register-phone"  data-ng-model="ticket.phone">
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon input-name-110" id="input-register-location">Location*</span>
+        <input type="text" class="form-control input-3x" placeholder="Your location"
+               aria-describedby="input-register-location" data-ng-model="ticket.location">
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon input-name-110" id="input-register-description">Description*</span>
+        <textarea type="text" class="form-control" style="width: 284% !important;"
+               aria-describedby="input-register-description"  data-ng-model="ticket.description"/>
+    </div>
+    <a id="btn-register-submit" data-ng-href="" data-ng-click="registerNewTicket()" class="btn btn-default home-button" style="margin-top: 15px;">Register</a>
+    <a id="btn-register-cancel" class="btn btn-default home-button" style="margin-top: 15px;" data-ng-href="#/">Cancel</a>
+</div>
+    <div class="padding-30" data-ng-if="ticketId != ''">
+        <strong>Your ticket has been successfully submitted.
+            Your ticket ID id is: {{ticketId}}
+        </strong>
+        <br />
+        <a id="btn-register-home" class="btn btn-default home-button" style="margin-top: 15px;" data-ng-href="#/">Home</a>
+    </div>
+</div>

@@ -2,16 +2,16 @@
 
 
 angular.module('supportTicketApp')
-  .controller('NavbarCtrl', function ($scope, $location, brukerservice) {
+  .controller('NavbarCtrl', function ($scope, $location, userService) {
 	  $scope.isActive = function (viewLocation) { 
 	        return viewLocation === $location.path();
 	    };
         $scope.brukskontekst = function() {
-            return brukerservice.brukskontekst;
+            return userService.brukskontekst;
         }
 
         $scope.init = function() {
-            brukerservice.hentBrukskontekst();
+            userService.hentBrukskontekst();
         };
 
         $scope.init();

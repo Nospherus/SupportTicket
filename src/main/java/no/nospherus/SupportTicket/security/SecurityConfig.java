@@ -14,7 +14,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("admin").password("test").roles("SAKSBEHANDLER", "SAKSFORDELER", "ADMIN");
+        auth.inMemoryAuthentication().withUser("admin").password("test").roles("ADMIN");
         auth.inMemoryAuthentication().withUser("guest").password("test").roles();
     }
 
@@ -22,9 +22,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/").authenticated()
-                .antMatchers("/external_scripts/**").permitAll()
-                .antMatchers("/styles/*").permitAll()
+                .antMatchers("/").permitAll()
+                .antMatchers("/admin/*").hasRole("ADMIN")
                 .and().formLogin();
+        http.csrf().disable();
     }
 }
