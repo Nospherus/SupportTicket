@@ -23,5 +23,25 @@ angular.module('supportTicketApp').service('ticketService', function($http, $q) 
         return d.promise;
     };
 
+    ticketService.getTickets = function() {
+        var d = $q.defer();
+        $http.get('/api/ticket/').then(function(data) {
+            d.resolve(data);
+        }, function(errors) {
+            d.reject(errors);
+        });
+        return d.promise;
+    };
+
+    ticketService.updateTicket = function(ticket) {
+        var d = $q.defer();
+        $http.put('/api/ticket/', ticket).then(function(data) {
+            d.resolve(data);
+        }, function(errors) {
+            d.reject(errors);
+        });
+        return d.promise;
+    };
+
     return ticketService;
 });

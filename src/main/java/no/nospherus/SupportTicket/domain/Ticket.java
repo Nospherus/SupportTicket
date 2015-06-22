@@ -7,13 +7,17 @@ import javax.persistence.*;
  */
 @Entity
 public class Ticket extends Base {
+    @Column(length = 4096)
     private String description;
+    @Column(length = 4096)
+    private String resolution;
     @Enumerated(EnumType.STRING)
     private Status status;
     @OneToOne(cascade = CascadeType.ALL)
     private Person customer;
     @OneToOne(cascade = CascadeType.ALL)
     private Person tekkie;
+    private String location;
 
     public String getDescription() {
         return description;
@@ -45,5 +49,21 @@ public class Ticket extends Base {
 
     public void setTekkie(Person tekkie) {
         this.tekkie = tekkie;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getResolution() {
+        return resolution;
+    }
+
+    public void setResolution(String resolution) {
+        this.resolution = resolution;
     }
 }

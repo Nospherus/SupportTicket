@@ -1,0 +1,95 @@
+<div data-ng-controller="AdministrationCtrl">
+    <strong style="font-weight: bold;font-size: large">Tickets</strong>
+    <table class="table">
+        <tr>
+            <th>ticket id</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Assigned to</th>
+            <th>Location</th>
+            <th>Description</th>
+        </tr>
+        <tr ng-repeat="ticket in tickets" data-ng-click="openModal(ticket.id);">
+            <td>{{ ticket.id }}</td>
+            <td>{{ ticket.customer.name }}</td>
+            <td>{{ ticket.status }}</td>
+            <td>{{ ticket.tekkie.name }}</td>
+            <td>{{ ticket.location }}</td>
+            <td>{{ ticket.description }}</td>
+        </tr>
+    </table>
+
+    <div class="modal fade" id="ticketModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span data-aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title">Ticket {{ ticket.id }}</h4>
+                </div>
+                <div class="modal-body">
+                    <p data-ng-class="center">
+                        <strong>Ticket:</strong>
+                    <div class="input-group">
+                        <span class="input-group-addon input-name-110" id="input-admin-ticket-status">Status</span>
+                    <select ng-model="ticket.status" convert-to-number class="form-control" style="width: 495% !important">
+                        <option value="NEW">New</option>
+                        <option value="IN_PROGRESS">In progress</option>
+                        <option value="ON_HOLD">On hold</option>
+                        <option value="RESOLVED">Resloved</option>
+                    </select>
+                    </div>
+                    <div style="height: 30px;">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon input-name-110" id="input-admin-ticket-location">Location</span>
+                        <input type="text" class="form-control input-3x" placeholder="Your location"
+                               aria-describedby="input-admin-ticket-location" data-ng-model="ticket.location">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon input-name-110" style="height: 80px;"
+                              id="input-admin-description">Description</span>
+                        <textarea type="text" class="form-control" style="width: 284% !important; height: 80px;"
+                                  aria-describedby="input-admin-description" data-ng-model="ticket.description"/>
+                    </div>
+                        <strong>Customer:</strong>
+                    <div class="input-group">
+                        <span class="input-group-addon input-name-110" id="input-admin-customer-name">Name</span>
+                        <input type="text" class="form-control input-3x"
+                               aria-describedby="input-admin-customer-name" data-ng-model="ticket.customer.name">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon input-name-110" id="input-admin-customer-email">Email</span>
+                        <input type="text" class="form-control input-3x" placeholder="Your email"
+                               aria-describedby="input-admin-customer-email" data-ng-model="ticket.customer.email">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon input-name-110" id="input-admin-customer-phone">Phone</span>
+                        <input type="text" class="form-control input-3x" placeholder="Your phone number"
+                               aria-describedby="input-admin-customer-phone" data-ng-model="ticket.customer.phone">
+                    </div>
+
+                    <strong>Asignee:</strong>
+                    <div class="input-group">
+                        <span class="input-group-addon input-name-110" id="input-admin-tekkie-name">Name</span>
+                        <input type="text" class="form-control input-3x" placeholder="Name of technichian"
+                               aria-describedby="input-admin-tekkie-name"  data-ng-model="ticket.tekkie.name">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon input-name-110" style="height: 80px;"
+                              id="input-admin-resolution">Resolution</span>
+                        <textarea type="text" class="form-control" style="width: 284% !important; height: 80px;"
+                                  aria-describedby="input-admin-resolution" placeholder="Describe how the problem was solved"
+                                  data-ng-model="ticket.resolution"/>
+                    </div>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-ng-click="updateTicket();" data-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

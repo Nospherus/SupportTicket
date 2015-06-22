@@ -19,4 +19,6 @@ public interface TicketService {
     public Ticket registerNewTicket(newTicketDTO newTicketDTO);
 
     public void deleteTicket(Long id);
+
+    public Ticket updateTicket(Ticket ticket);
 }

@@ -14,7 +14,7 @@ public class TicketTransformer {
         customer.setName(external.getName());
         customer.setEmail(external.getEmail());
         customer.setPhone(external.getPhone());
-        customer.setLocation(external.getLocation());
+        internal.setLocation(external.getLocation());
         internal.setCustomer(customer);
         internal.setDescription(external.getDescription());
         return internal;

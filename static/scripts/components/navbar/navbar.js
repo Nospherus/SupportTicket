@@ -6,12 +6,16 @@ angular.module('supportTicketApp')
 	  $scope.isActive = function (viewLocation) { 
 	        return viewLocation === $location.path();
 	    };
-        $scope.brukskontekst = function() {
-            return userService.brukskontekst;
-        }
+        $scope.usercontext = function() {
+            return userService.usercontext;
+        };
+
+        $scope.hasRole = function(role) {
+            return userService.hasRole(role);
+        };
 
         $scope.init = function() {
-            userService.hentBrukskontekst();
+            userService.getUsercontext();
         };
 
         $scope.init();

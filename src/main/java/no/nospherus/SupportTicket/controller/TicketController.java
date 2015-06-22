@@ -5,6 +5,7 @@ import no.nospherus.SupportTicket.domain.newTicketDTO;
 import no.nospherus.SupportTicket.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -17,9 +18,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/ticket")
 public class TicketController {
-
-    @Value("${test.property}")
-    String test;
 
     @Autowired
     TicketService ticketService;
@@ -38,6 +36,7 @@ public class TicketController {
         return ticketService.registerNewTicket(ticket);
     }
 
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping(value="/", method = RequestMethod.GET)
     @ResponseBody
     @Transactional
@@ -45,10 +44,19 @@ public class TicketController {
         return ticketService.getAllTickets();
     }
 
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping(value="/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     @Transactional
     public void deleteTicket(@PathVariable Long id) {
         ticketService.deleteTicket(id);
+    }
+
+    @Secured({"ROLE_ADMIN"})
+    @RequestMapping(value="/", method = RequestMethod.PUT)
+    @ResponseBody
+    @Transactional
+    public Ticket updateTicket(@RequestBody Ticket ticket) {
+        return ticketService.updateTicket(ticket);
     }
 }

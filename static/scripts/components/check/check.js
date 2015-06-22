@@ -18,7 +18,7 @@ angular.module('supportTicketApp')
                     $scope.ticket = data.data;
                 });
             }
-        }
+        };
     })
 .filter("dateFilter", function () {
     return function (item) {
