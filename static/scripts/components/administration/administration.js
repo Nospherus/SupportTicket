@@ -19,6 +19,15 @@ angular.module('supportTicketApp')
             }
         };
 
+        $scope.deleteTicket = function() {ticketService.deleteTicket
+            if($scope.ticket != {}) {
+                ticketService.deleteTicket($scope.ticket.id).then(function() {
+                    $scope.ticket = {};
+                    $scope.getTickets();
+                });
+            }
+        };
+
         $scope.openModal = function(id) {
             ticketService.getTicket(id).then(function(data) {
                 $scope.ticket = data.data;

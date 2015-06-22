@@ -7,7 +7,6 @@
             <th>Status</th>
             <th>Assigned to</th>
             <th>Location</th>
-            <th>Description</th>
         </tr>
         <tr ng-repeat="ticket in tickets" data-ng-click="openModal(ticket.id);">
             <td>{{ ticket.id }}</td>
@@ -15,7 +14,9 @@
             <td>{{ ticket.status }}</td>
             <td>{{ ticket.tekkie.name }}</td>
             <td>{{ ticket.location }}</td>
-            <td>{{ ticket.description }}</td>
+        </tr>
+        <tr data-ng-if="tickets.length === 0">
+            <td colspan="5">No tickets found</td>
         </tr>
     </table>
 
@@ -87,6 +88,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-ng-click="updateTicket();" data-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-default" data-ng-click="deleteTicket();" data-dismiss="modal">Delete</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
