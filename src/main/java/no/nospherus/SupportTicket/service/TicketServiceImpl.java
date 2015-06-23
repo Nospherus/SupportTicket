@@ -5,6 +5,7 @@ import no.nospherus.SupportTicket.domain.Ticket;
 import no.nospherus.SupportTicket.domain.newTicketDTO;
 import no.nospherus.SupportTicket.domain.TicketTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
@@ -17,8 +18,14 @@ import java.util.List;
 @Transactional
 public class TicketServiceImpl implements TicketService {
 
+    @Value("${email.enabled}")
+    private Boolean emailEnabled;
+
     @Autowired
-    TicketRepository ticketRepository;
+    private MailService mailService;
+
+    @Autowired
+    private TicketRepository ticketRepository;
 
     @Override
     public Ticket getTicketById(Long id) {
@@ -36,6 +43,9 @@ public class TicketServiceImpl implements TicketService {
         Ticket ticket = transformer.toInternal(newTicketDTO);
         ticket.setStatus(Status.NEW);
         ticketRepository.save(ticket);
+        if(emailEnabled) {
+            mailService.sendConfirmation(ticket);
+        }
         return ticket;
     }
 
